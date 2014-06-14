@@ -1,5 +1,6 @@
-## The two functions should either store a matrix 
-## functions do
+## In this Programming Assignment will take advantage of the scoping rules of the R 
+## language to create two functions that, together, should cache the inverse 
+##  of a matrix to avoid recalculating the materix if the inverse is already cached
 
 ## the function makeCacheMatrix should create a matrix object that can cahche its inverse
 
