@@ -2,7 +2,7 @@
 ## language to create two functions that, together, should cache the inverse 
 ##  of a matrix to avoid recalculating the materix if the inverse is already cached
 
-## the function makeCacheMatrix should create a matrix object that can cahche its inverse
+## the function makeCacheMatrix creates a matrix object that can cahche its inverse
 
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
@@ -11,8 +11,8 @@ makeCacheMatrix <- function(x = matrix()) {
                 m <<- NULL
         }
         get <- function() x
-        setmatrix <- function(solve) m <<- solve
-        getmatrix <- function() m
+        setmatrix <- function(solve) m <<- solve ## set the inverse matrix if not cached
+        getmatrix <- function() m ## get the inverse matrix if cached
         list(set = set, get = get, 
              setmatrix = setmatrix,
              getmatrix = getmatrix)
@@ -25,11 +25,11 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x = matrix(), ...) {
         m <- x$getmatrix()
         if(!is.null(m)) {
-                message("getting cached matrix data")
+                message("getting cached matrix data") ## get the inverse matrix if cached
                 return(m)
         }
-        data <- x$get()
-        m <- solve(data)
-        x$setmatrix(m)
+        data <- x$get() 
+        m <- solve(data) ## calculate inversee
+        x$setmatrix(m) ## set inverse matrix if not cached
         m
 }
